@@ -1,4 +1,4 @@
-const { parsePathParameters }  = require('./utils');
+const { parsePathParameters } = require('./utils');
 
 
 describe('parsePathParameters', () => {
@@ -6,8 +6,12 @@ describe('parsePathParameters', () => {
     expect(parsePathParameters('', '')).toBeDefined();
     expect(typeof parsePathParameters('', '')).toBe('object');
   });
-
-  //
-  // TODO: parsePathParameters のユニットテストを追加しよう
-  //
+  test('output sample object', () => {
+    expect(parsePathParameters('/posts/3/comments/4', '/posts/:postId/comments/:commentId')).toEqual(
+      {
+        postId: 3,
+        commentId: 4,
+      },
+    );
+  });
 });

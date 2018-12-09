@@ -13,10 +13,18 @@
  * }
  */
 const parsePathParameters = function(originalPath, pathWithParams) {
-  //
-  // TODO
-  //
-  return {};
+  const result = {};
+  const splittedPathWithParams = pathWithParams.split('/');
+  const splittedOriginalPath = originalPath.split('/');
+  const splittedArrayMarged = [splittedPathWithParams, splittedOriginalPath];
+  for (let i = 0, len = splittedArrayMarged[0].length; i < len; i += 1) {
+    const elemOfsplittedPathWithParams = splittedArrayMarged[0][i];
+    const elemOfsplittedOriginalPath = splittedArrayMarged[1][i];
+    if (elemOfsplittedPathWithParams[0] === ':') {
+      result[elemOfsplittedPathWithParams.slice(1)] = Number(elemOfsplittedOriginalPath);
+    }
+  }
+  return result;
 };
 
 module.exports = {
