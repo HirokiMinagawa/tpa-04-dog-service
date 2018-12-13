@@ -15,12 +15,7 @@ const fetchDogById = (req, res) => {
   if (!dogInfo) {
     res.status(400).json({});
   } else {
-    res.json({
-      id: dogInfo.id,
-      name: dogInfo.name,
-      quote: dogInfo.quote,
-      imageUrl: dogInfo.imageUrl,
-    });
+    res.json(dogInfo);
   }
 };
 
